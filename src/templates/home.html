@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Spotify Statistics{% endblock %}
+
+{% block content %}
+<div>
+    <h3>Authenticated</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tracks</th>
+            <th scope="col">Artists</th>
+            <th scope="col">Recents</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ top_tracks }}</td>
+            <td>{{ top_artists }}</td>
+            <td>{{ recently_played }}</td>
+        </tbody>
+      </table>
+</div>
+{% endblock %}
