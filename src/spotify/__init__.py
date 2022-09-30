@@ -48,7 +48,7 @@ def getRecentlyPlayedTracks():
             images=[Image(width=image["width"], height=image["height"], url=image["url"]) for image in album["images"]],
             release_date=album["release_date"],
             total_tracks=album["total_tracks"]
-        ),
+        )
         
         artists = track["artists"]
         artists = [Artist(
@@ -75,7 +75,7 @@ def getRecentlyPlayedTracks():
     return data
 
 
-def getTopArtists(time_range: str = "medium_term"):
+def getTopArtists(time_range: str = "short_term"):
     '''
     Get user's top artists.
 
@@ -87,7 +87,7 @@ def getTopArtists(time_range: str = "medium_term"):
             long_term (several years), 
             medium_term (approximately last 6 months), 
             short_term (approximately last 4 weeks). 
-        Default: medium_term
+        Default: short_term
 
     Returns
     -------
@@ -131,7 +131,7 @@ def getTopArtists(time_range: str = "medium_term"):
     return data
 
 
-def getTopTracks(time_range: str = "medium_term"):
+def getTopTracks(time_range: str = "short_term"):
     '''
     Get user's top tracks.
 
@@ -143,7 +143,7 @@ def getTopTracks(time_range: str = "medium_term"):
             long_term (several years), 
             medium_term (approximately last 6 months), 
             short_term (approximately last 4 weeks). 
-        Default: medium_term
+        Default: short_term
 
     Returns
     -------
@@ -181,7 +181,7 @@ def getTopTracks(time_range: str = "medium_term"):
             images=[Image(width=image["width"], height=image["height"], url=image["url"]) for image in album["images"]],
             release_date=album["release_date"],
             total_tracks=album["total_tracks"]
-        ),
+        )
         
         artists = item["artists"]
         artists = [Artist(
