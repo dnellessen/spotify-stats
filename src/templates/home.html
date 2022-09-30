@@ -3,21 +3,94 @@
 
 {% block content %}
 <div>
-    <h3>Authenticated</h3>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Tracks</th>
-            <th scope="col">Artists</th>
-            <th scope="col">Recents</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ top_tracks }}</td>
-            <td>{{ top_artists }}</td>
-            <td>{{ recently_played }}</td>
-        </tbody>
-      </table>
+    <h3>Spotify Statistics</h3>
+
+    <div style="float: left; width: 33%; overflow: scroll;">
+        <table class="table" style="width: 400px">
+            <caption>Recently Played</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Tracks</th>
+                </tr>
+            </thead>
+
+            {% for recent in recently_played %}
+            <tr style="white-space: nowrap;">
+                <td>{{ loop.index }}</td>
+                <td style="width:10%">
+                    <img height="60" src="{{ recent["data"].album.images[0].url }}">
+                </td>
+                <td>
+                    <b>{{ recent["data"].name }}</b>
+                    <br>
+                    {% for artist in recent["data"].artists %}
+                    {% if loop.index < recent["data"].artists|length %} {{ artist.name + ', ' }} {% else %} {{
+                        artist.name }} {% endif %} {% endfor %} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div style="float: left; width: 33%; overflow: scroll;">
+        <table class="table" style="width: 400px">
+            <caption>Top Tracks [4 weeks]</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Tracks</th>
+                </tr>
+            </thead>
+
+            {% for track in top_tracks %}
+            <tr style="white-space: nowrap;">
+                <td>{{ loop.index }}</td>
+
+                <td>
+                    <img height="60" src="{{ track.album.images[0].url }}">
+                </td>
+                <td>
+                    <b>{{ track.name }}</b>
+                    <br>
+                    {% for artist in track.artists %}
+                    {% if loop.index < track.artists|length %} {{ artist.name + ', ' }} {% else %} {{ artist.name }} {%
+                        endif %} {% endfor %} </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+    <div style="float: left; width: 33%; overflow: scroll;">
+        <table class="table" style="width: 400px">
+            <caption>Top Artists [4 weeks]</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Artists</th>
+                </tr>
+            </thead>
+
+            {% for artist in top_artists %}
+            <tr style="white-space: nowrap;">
+                <td>{{ loop.index }}</td>
+
+                <td>
+                    <img height="60" src="{{ artist.images[0].url }}">
+                </td>
+                <td>
+                    <b>{{ artist.name }}</b>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
 </div>
+
+
 {% endblock %}
