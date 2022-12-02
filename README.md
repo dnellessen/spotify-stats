@@ -43,7 +43,7 @@ pip install -r requirements.txt
 # Usage
 
 Go the the [Spotify for Developers](https://developer.spotify.com/dashboard/login) website, login to your account and create a new app. In its overview edit the settings and add a redirect URI (e.g. http://127.0.0.1:8000/callback). Important: Make sure the path is ```/callback```. I'd suggest using your local host. \
-Now add the following environment variables (ajust accorrding to the host and port your are using and make sure they are equivalent to those you just set as a redirect URI):
+Now add the following environment variables (ajust according to the host and port your are using and make sure they are equivalent to those you just set as a redirect URI):
 ```sh
 export CLIENT_ID='Your Client ID'
 export CLIENT_SECRET='Your Client Secret'
